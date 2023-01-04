@@ -13,6 +13,7 @@
       b: 2,
       c: {}
     }
+    Object.defineProperty(person, 'x', {})
 
     // 延伸的三個物件方法 preventExtensions、seal、Freeze
     // 中文語意分別表示 防止擴充、封裝、凍結
@@ -22,8 +23,9 @@
     function sample_preventExtensions(){
       Object.preventExtensions(person); // 直接針對物件來做限制
       console.log('是否可被擴充', Object.isExtensible(person));  // isExtensible 驗證
+      // console.log('是否可被 封裝', Object.isSealed(person));
       console.log('person a 的屬性特徵', Object.getOwnPropertyDescriptor(person, 'a'));  // getOwnPropertyDescriptor 方法, 查看物件內屬性特徵
-      // console.log('person b 的屬性特徵', Object.getOwnPropertyDescriptor(person, 'b'));
+      
       // 調整屬性
       person.a = 'a';
   
@@ -66,10 +68,14 @@
   
       // 巢狀屬性調整
       person.c.a = 'ca';
-  
+      
       // 調整特徵
       Object.defineProperty(person, 'a', {
         writable: false
+      });
+      // 注意 : 當前屬性特徵若原本為true, 就可以改變
+      Object.defineProperty(person, 'x', {
+        // writable: true
       });
   
       // 刪除
@@ -124,16 +130,16 @@
 
   <h1>物件屬性不可寫入？物件擴充的修改與調整</h1>
 
-  <h2>延伸的三個物件方法 preventExtensions、seal、Freeze</h2>
+  <h2>延伸的三個物件方法 preventExtensions、seal、freeze</h2>
   <h2>中文語意分別表示 防止擴充、封裝、凍結</h2>
 
-  <h3>1. preventExtensions : 防止擴充</h3>
-  <h3>2. seal :</h3>
+  <h3>1. <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions">preventExtensions</a> : 防止擴充</h3>
+  <h3>2. <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/seal">seal</a> :</h3>
   <ul>
     <li>物件屬性無法新增刪除，也無法重新配置特徵，但是可以調整目前屬性值</li>
     <li>物件會被加上 preventExtensions</li>
   </ul>
-  <h3>3. Freeze : 物件會加上 seal，並且無法調整值</h3>
+  <h3>3. <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">freeze</a> : 物件會加上 seal，並且無法調整值</h3>
   
   <h3>補充 : Object.getOwnPropertyDescriptor 方法, 查看物件內屬性特徵</h3>
   <!-- 三個 Object 方法 - 針對物件本身做操作 -->
