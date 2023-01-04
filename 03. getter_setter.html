@@ -6,13 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <script>
-    
+</head>
+
+<body>
+  <a href="./01. Defined-Property.html">01. Defined-Property</a>
+  <a href="./02. Enumeration.html">02. Enumeration</a>
+  <a href="./03. getter_setter.html">03. getter_setter</a>
+  <a href="./04. preventExtensions.html">04. preventExtensions</a>
+
+  <h1>Getter 與 Setter，賦值運算不使用函式</h1>
+
+  <h2>Getter 取得特定值的方法, 不會傳入參數</h2>
+  <h2>Setter 存值的方法</h2>
+</body>
+</html>
+
+<script>
+  
   // 1.
   function sample_wallet(){
     var wallet = {
       total: 100,
-  
+
       set save(price) {
         this.total = this.total + price / 2;
       },
@@ -46,7 +61,7 @@
       }
     });
     wallet.save = 300;
-  
+
     console.log("wallet:", wallet)
     console.log("Object.getOwnPropertyDescriptor(wallet, 'save'):", Object.getOwnPropertyDescriptor(wallet, 'save'))
   }
@@ -67,19 +82,4 @@
   // }
   // console.log("a.latest:", a.latest());
 
-  </script>
-</head>
-
-<body>
-  <a href="./01. Defined-Property.html">01. Defined-Property</a>
-  <a href="./02. Enumeration.html">02. Enumeration</a>
-  <a href="./03. getter_setter.html">03. getter_setter</a>
-  <a href="./04. preventExtensions.html">04. preventExtensions</a>
-
-  <h1>Getter 與 Setter，賦值運算不使用函式</h1>
-
-  <h2>Getter 取得特定值的方法, 不會傳入參數</h2>
-  <h2>Setter 存值的方法</h2>
-</body>
-
-</html>
+</script>
