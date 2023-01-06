@@ -15,15 +15,17 @@
   <a href="./04. preventExtensions.html">04. preventExtensions</a>
 
   <h1>物件屬性延伸章節：屬性的特徵</h1>
+  <!-- Object.defineProperty - 針對物件內的屬性做操作 -->
 
   <h2><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty#%E8%AA%9E%E6%B3%95">Object.defineProperty</a>(物件, 屬性, 參數)</h2>
   <h3>屬性，調整屬性的特徵 :</h3>
   <ul>
     <li>1. value : 值</li>
-    <li>2. writable : 可否寫入 -> 'use strict' 設定 嚴謹模式 ( 跳出錯誤 )</li>
+    <li>2. writable : 可否寫入</li>
+    <li>-> 禁止寫入限制於 'x' 屬性, 但可對裡面值做額外設定 ( 淺層保護 )</li>
+    <li>-> 'use strict' 設定 嚴謹模式 ( 跳出錯誤 )</li>
     <li>3. configurable : 可否被刪除</li>
-    <li>4. enumerable : 可否被列舉 -> 禁止寫入限制於 'x' 屬性, 但可對裡面值做額外設定 ( 淺層保護 )</li>
-    <!-- Object.defineProperty - 針對物件內的屬性做操作 -->
+    <li>4. enumerable : 可否被列舉</li>
   </ul>
 </body>
 </html>
