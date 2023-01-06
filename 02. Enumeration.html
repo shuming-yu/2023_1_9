@@ -11,8 +11,8 @@
 <body>
   <a href="./01. Defined-Property.html">01. Defined-Property</a>
   <a href="./02. Enumeration.html">02. Enumeration</a>
-  <a href="./03. getter_setter.html">03. getter_setter</a>
-  <a href="./04. preventExtensions.html">04. preventExtensions</a>
+  <a href="./03. preventExtensions.html">03. preventExtensions</a>
+  <!-- <a href="./03. getter_setter.html">03. getter_setter</a> -->
 
   <h1>屬性列舉與原型的關係</h1>
 
@@ -27,10 +27,11 @@
     this.color = color || '白色';
     this.size = size || '小';
   }
+  Dog.prototype.aaa = 'aaa';
   Dog.prototype.bark = function () {
     console.log(this.name + ' 吠叫');
   }
-  console.log("Dog.prototype:", Dog.prototype);
+  // console.log("Dog.prototype:", Dog.prototype);
 
   // 2.
   // Object.defineProperty(Dog.prototype, 'bark', {
@@ -42,12 +43,13 @@
   console.log('Bibi size 的屬性特徵', Object.getOwnPropertyDescriptor(Bibi, 'size'));
 
   console.log('Dog.prototype bark 的屬性特徵', Object.getOwnPropertyDescriptor(Dog.prototype, 'bark'));
+
   // 1.
   for (const key in Bibi) {
     console.log("key:", key);
   }
   
-  // console.log(Object.keys(Bibi));
+  console.log(Object.keys(Bibi));
 
 
 

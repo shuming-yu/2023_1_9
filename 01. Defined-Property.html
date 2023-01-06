@@ -11,8 +11,8 @@
 <body>
   <a href="./01. Defined-Property.html">01. Defined-Property</a>
   <a href="./02. Enumeration.html">02. Enumeration</a>
-  <a href="./03. getter_setter.html">03. getter_setter</a>
-  <a href="./04. preventExtensions.html">04. preventExtensions</a>
+  <a href="./03. preventExtensions.html">03. preventExtensions</a>
+  <!-- <a href="./03. getter_setter.html">03. getter_setter</a> -->
 
   <h1>物件屬性延伸章節：屬性的特徵</h1>
   <!-- Object.defineProperty - 針對物件內的屬性做操作 -->
@@ -37,8 +37,9 @@
     b: 2,
     c: 3
   }
+  console.log('person 的屬性特徵', Object.getOwnPropertyDescriptor(window, 'person'));
   // console.log('person a 的屬性特徵', Object.getOwnPropertyDescriptor(person, 'a'));
-  // console.log("person:", person);
+
 
   function sample_checkDefault(){
     Object.defineProperty(person, 'check', {
@@ -51,16 +52,29 @@
     console.log('person check 的屬性特徵', Object.getOwnPropertyDescriptor(person, 'check'));
   }
 
-
-
+  
   // Object.defineProperty(物件, 屬性, 參數)
   // 屬性，調整屬性的特徵
   Object.defineProperty(person, 'a', {
     value: 4, // 1. 值
+
+    // 1. Object.defineProperty 可修改 value a:14
     writable: false,  // 2. 可否寫入
     configurable: true, // 3. 可否被刪除
-    enumerable: true  // 4. 可否被列舉
+    
+    // 2. Object.defineProperty 會報錯
+    // writable: false,  // 2. 可否寫入
+    // configurable: false, // 3. 可否被刪除
+
+    // 3. Object.defineProperty 可修改 value a:14
+    // writable: true,  // 2. 可否寫入
+    // configurable: false, // 3. 可否被刪除
   });
+  Object.defineProperty(person, 'a', {
+    value: 14,
+  });
+  // console.log('person a 的屬性特徵', Object.getOwnPropertyDescriptor(person, 'a'));
+  
   // 1.
   person.a = 5; // writable 設定 false, 值不會改變 (靜默錯誤)
   console.log("person_writable:", person);
@@ -92,8 +106,7 @@
   }
 
 
-  // 5.
-  // 新增屬性, 但只能做到 淺層保護
+  // 5. 新增屬性, 但只能做到 淺層保護
   Object.defineProperty(person, 'd', {
     value: {},
     writable: false // 禁止寫入限制於 'd' 屬性
